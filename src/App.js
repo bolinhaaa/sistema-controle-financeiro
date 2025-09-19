@@ -4,7 +4,7 @@ import GlobalStyle from "./styles/global";
 import Header from "./components/Header";
 import Resume from "./components/Resume";
 import Form from "./components/Form";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { HashRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import Login from "./pages/Login";
 import { AuthProvider, useAuth } from "./contexts/AuthContext";
 import { db } from "./firebase";
@@ -61,14 +61,14 @@ function PrivateRoute({ children }) {
 }
 
 const App = () => (
-  <BrowserRouter>
+  <Router>
     <AuthProvider>
       <Routes>
         <Route path="/" element={<PrivateRoute><PrivateApp /></PrivateRoute>} />
         <Route path="/login" element={<Login />} />
       </Routes>
     </AuthProvider>
-  </BrowserRouter>
+  </Router>
 );
 
 
